@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:clipToPadding="false"
+    android:animateLayoutChanges="true"
+    android:background="@drawable/gradient_bg">
+
+    <!-- Top header (app bar style) -->
+    <View
+        android:id="@+id/headerBar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/deepPurple"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kerajaan Uthmaniyah"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="@id/headerBar"
+        app:layout_constraintEnd_toEndOf="@id/headerBar"
+        app:layout_constraintTop_toTopOf="@id/headerBar"
+        app:layout_constraintBottom_toBottomOf="@id/headerBar"
+        android:gravity="center" />
+
+    <!-- Progress text -->
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question 1 of 10"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        app:layout_constraintTop_toBottomOf="@id/headerBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Question Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/questionCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:layout_marginTop="12dp"
+        android:padding="18dp"
+        app:layout_constraintTop_toBottomOf="@id/tvProgress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Question goes here"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Feedback Image (tick / cross) -->
+            <ImageView
+                android:id="@+id/ivResult"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:contentDescription="result image"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@id/tvQuestion"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="-10dp"
+                android:layout_marginTop="-10dp"
+                android:translationZ="8dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Answer Buttons 2x2 grid -->
+    <!-- Row 1 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnA"
+        style="@style/Quiz.ChoiceButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="A. Option A"
+        app:layout_constraintTop_toBottomOf="@id/questionCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnB"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontalWeight="1"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnB"
+        style="@style/Quiz.ChoiceButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="B. Option B"
+        app:layout_constraintTop_toBottomOf="@id/questionCard"
+        app:layout_constraintStart_toEndOf="@id/btnA"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontalWeight="1"/>
+
+    <!-- Row 2 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnC"
+        style="@style/Quiz.ChoiceButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="C. Option C"
+        app:layout_constraintTop_toBottomOf="@id/btnA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnD"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontalWeight="1"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnD"
+        style="@style/Quiz.ChoiceButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="D. Option D"
+        app:layout_constraintTop_toBottomOf="@id/btnB"
+        app:layout_constraintStart_toEndOf="@id/btnC"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontalWeight="1"/>
+
+    <!-- Small footer text / tip -->
+    <TextView
+        android:id="@+id/tvTip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tap an answer to lock it in — you'll see a quick animation"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@id/btnC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
